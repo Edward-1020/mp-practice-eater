@@ -1,3 +1,5 @@
+<import src="./post-item/post-item-template.wxml" />
+
 <view>
   <swiper indicator-dots="true" autoplay="true" interval="2000">
     <swiper-item>
@@ -10,19 +12,9 @@
       <image src="../../images/swiper/3.jpeg" />
     </swiper-item>
   </swiper>
-  <view class="post-container">
-    <view class="post-author-date">
-      <image class="post-author" src="../../images/avatar/1.jpeg" />
-      <text class="post-date">NOV 25 2016</text>
+  <block wx:for="{{articles}}" wx:for-item="item">
+    <view catch:tap="onPostTap" data-id="{{item.id}}">
+      <template is="postItem" data="{{...item}}"/>
     </view>
-    <text class="post-title">小得儿得儿，次包子</text>
-    <image class="post-image" src="../../images/post/baozi.jpeg" />
-    <text class="post-content">三春之初，阴阳交际，寒气既消，温不至热，于时享宴，则曼头宜设。</text>
-    <view class="post-like">
-      <image class="post-like-image" src="../../images/icon/star.svg" />
-      <text class="post-like-font">65</text>
-      <image class="post-like-image" src="../../images/icon/chat.svg" />
-      <text class="post-like-font">34</text>
-    </view>
-  </view>
+  </block>
 </view>
