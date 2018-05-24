@@ -2,7 +2,8 @@ const data = require('../../../data/posts-data');
 
 Page({
     data: {
-        postId: undefined
+        postId: undefined,
+        isPlaying: false
     },
     onCollectionTap() {
         let postsCollected = wx.getStorageSync('postCollected');
@@ -35,6 +36,24 @@ Page({
                 });
             }
         });
+    },
+    onMusicTap() {
+        if (!this.data.isPlaying) {
+            wx.playBackgroundAudio({
+                dataUrl: `http://ws.stream.qqmusic.qq.com/C100002mWVx72p8Ugp.m4a?fromtag=38`,
+                title: `恋恋风尘-老狼`,
+                coverImgUrl: `http://y.gtimg.cn/music/photo_new/T002R150x150M000001VaXQX1Z1Imq.jpg?max_age=2592000`
+            });
+            return this.setData({
+                isPlaying: true
+            });
+        }
+        if (this.data.isPlaying) {
+            wx.pauseBackgroundAudio();
+            return this.setData({
+                isPlaying: false
+            });
+        }
     },
     onLoad(opts) {
         const postId = opts.id;

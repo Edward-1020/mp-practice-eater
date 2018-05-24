@@ -1,6 +1,6 @@
 <view class="container">
     <image class="head-image" src="../../../images/post/baozi.jpeg" />
-    <image class="audio" src="../../../images/icon/music.svg" />
+    <image catchtap="onMusicTap" class="audio" src="{{isPlaying ? '../../../images/icon/stop.svg' : '../../../images/icon/start.svg'}}" />
     <view class="author-date">
         <image class="avatar" src="../../../images/avatar/1.jpeg" />
         <text class="author">{{author}}</text>
